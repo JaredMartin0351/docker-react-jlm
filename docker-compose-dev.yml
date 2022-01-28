@@ -1,0 +1,24 @@
+version: '3.9'
+
+services:
+
+  docker-react-dev:
+    container_name: docker-react-dev
+    build: 
+      context: .
+      dockerfile: Dockerfile-dev
+    volumes:
+      - '/app/node_modules'
+      - '.:/app'
+    ports:
+      - 3002:3000
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+
+  # docker-react-test:
+  #   container_name: docker-react-test
+  #   image: docker-react-crm_docker-react-dev
+  #   volumes:
+  #     - '/app/node_modules'
+  #     - '.:/app'
+  #   command: ["npm", "run", "test"]
